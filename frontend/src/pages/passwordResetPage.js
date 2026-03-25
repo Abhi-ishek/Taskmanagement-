@@ -2,8 +2,7 @@ import {loginUser} from "../services/authService"
 import {useState} from "react"
 import {useNavigate, Link} from "react-router-dom"
 import toast from "react-hot-toast"
-import GetNewQuote from "../components/Quote"
-const Login = ()=> {
+const passwordResetPage = ()=> {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({email:"", password:""})
   const navigate = useNavigate();
@@ -63,16 +62,13 @@ const Login = ()=> {
     required 
     onChange={handleChange}
   />
-  <div className="text-right py-4">
-    <a className="text-blue-600 underline" href="#">Forgot Password</a>
-  </div>
 
   <button 
     type="submit" 
     className="w-full mb-3 bg-indigo-500 hover:bg-indigo-600/90 active:scale-95 transition py-2.5 rounded-full text-white font-medium"
     disabled={loading}
   >
-   { loading? "Verifying... " : "Login"}
+   { loading? "Please wait a moment" : "change Password"}
   </button>
   <p className="text-center mt-4">
     Don’t have an account? <Link to="/register" className="text-blue-500 underline">Register Now</Link>
@@ -82,4 +78,4 @@ const Login = ()=> {
 </>
     )
 }
-export default Login;
+export default passwordResetPage;

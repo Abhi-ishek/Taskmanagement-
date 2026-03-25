@@ -12,11 +12,14 @@ const[loading, setLoading] = useState(false)
 const [tasks, setTasks] = useState([]);
 const [showToggle, setShowToggle] = useState(false)
 const [addTask, setAddTask] = useState({title:"", content:""})
+const [editedTask, setEditedTask] = useState(null);
 const nagivate = useNavigate();
+
 const handleAddTask = async (e)=>
 {
     try{
         const res = await API.post("/api/tasks/add", addTask);
+        console.log(res.data)
         setTasks([...tasks, res.data])
         setAddTask([{title:"", content:""}])
     }
@@ -42,7 +45,7 @@ const handleStatus = async (taskId)=>
 {
       const res = await  API.put(`/api/tasks/update/${taskId}`)
       if(res.status===200)
-            toast.success("you done the task keep going on 👌", {id:taskId, duration:3000})
+            toast.success(GetNewQuote ||"you done the task keep going on 👌", {id:taskId, duration:3000})
         setTasks(prevTasks =>
         {
          return prevTasks.map(task=>task._id != taskId? task: res.data)
@@ -56,6 +59,16 @@ const handleLogout = ()=>
         if(!window.confirm("Are you sure want to Logout ?")) return
         localStorage.removeItem("token")
         window.location.href = "/login"
+}
+const editTask = async (taskId)=>
+{
+  try{
+      const task = tasks.filter((task)=>task._id===taskId)
+  }
+  catch(err)
+  {
+
+  }
 }
 
 useEffect(()=> {
@@ -83,7 +96,7 @@ fetchTasks()
 return (
 <>
 
-<nav className="bg-white/70 backdrop-blur-xl h-20px rounded-b-3xl overflow-hidden border-b border-gray-200 sticky top-0 z-50">
+<nav className="bg-white/70 backdrop-blur-xl rounded-b-3xl overflow-hidden border-b border-gray-200 sticky top-0 z-50">
   <div className="max-w-screen-xl mx-auto flex items-center justify-between px-5 py-2">
 
     <div className="flex flex-col justify-center">
@@ -135,6 +148,9 @@ handleAddTask={handleAddTask}
    setShowToggle={setShowToggle} />
 )}
 
+{
+
+}
 { loading? (<h3>Loading Tasks...</h3>) : (
     tasks.length > 0 ? ( <div className="flex flex-col items-center justify-center gap-4 p-5 border border-blue-300 rounded-2xl"> {
                             tasks.map((task)=> {
@@ -144,8 +160,7 @@ handleAddTask={handleAddTask}
                                 onDelete={handleDelete}
                                 changeStatus = {handleStatus}
                                 isCompleted= {task.status=="pending"? false:true}
-
-                                  />  )      
+                                  />  )
                                                 } )
                                             }
                         </div>)  : (<p>No tasks found. Start by creating one!</p>) 

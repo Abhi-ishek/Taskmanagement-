@@ -2,11 +2,12 @@ import React, {Suspense, lazy} from "react"
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import PageLoader from "./components/PageLoader"
 import Dashboard from "./pages/Dashboard"
-const Intro = lazy(()=> import("./pages/Intro"))
+const Intro = lazy(()=> import("./pages/IntroPage"))
 const Login = lazy(()=> import("./pages/Login"))
 const Register = lazy(()=> import("./pages/Register"))
 import {Toaster} from "react-hot-toast"
 import IntroPage from "./pages/IntroPage"
+import ResetPassword from "./pages/passwordResetPage"
 const App = ()=>
 {
 
@@ -21,7 +22,7 @@ const App = ()=>
     <Route path="/" element={
       <Suspense fallback={<PageLoader message="Loading Welcome Page" />} >  <Intro/>  </Suspense>
     }> </Route> 
-
+    <Route path="/reset-password" element={<passwordResetPage/>}></Route>
     <Route path="/login" element={
       <Suspense fallback={<PageLoader message="Preparing to Login" />}>   <Login/>  </Suspense>
     }> </Route>

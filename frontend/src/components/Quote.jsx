@@ -1,14 +1,14 @@
 import {useState, useEffect} from "react"
 import API from "../api/axiosInstance"
 
-function getNewQuote({showRefresh=false}) {
+function getNewQuote({showRefresh=false, style, maxlength=30}) {
     const [quote, setQuote] = useState("loading... quote")
     const [loading, setLoading] = useState(false)
     const getQuote = async ()=>
             {
               try {
                 setLoading(true)
-                 const  res = await API.get("http://api.quotable.io/random?maxLength=30")
+                 const  res = await API.get(`http://api.quotable.io/random?maxLength=${maxlength}`)
                  setQuote(res.data.content)
                }
                catch(err)
@@ -30,7 +30,7 @@ return(
     <>
 <div className="flex justify-center mt-1">
   <p className="flex items-center gap-2 text-sm text-gray-500 italic text-center max-w-md leading-relaxed">
-    <span className="truncate text-blue-500">
+    <span className={ style || "truncate text-blue-500"}>
       {quote}
     </span>
     {showRefresh && (

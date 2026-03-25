@@ -78,6 +78,26 @@ exports.deleteTask = async (req, res)=>
     }
 }
 
+exports.editTask = async (req, res, next)=>
+{
+    try
+    {
+        const Updatedtask = req.body
+        const task = await tasksdb.find({_id:req.params.id._id, user:req.params.user})
+        if(task)
+        {  await tasksdb.updateOne({_id:req.body._id}, {Updatedtask})
+           return  res.status(200).json()
+        }
+        return res.status(401).json({message:"task not found"})
+    }
+    catch(err)
+    {
+        next(err)
+    }
+}
+
+
+
 exports.register = async (req, res, next)=>
 {
     try
