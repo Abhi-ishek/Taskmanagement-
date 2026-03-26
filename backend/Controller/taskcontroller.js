@@ -64,7 +64,7 @@ exports.deleteTask = async (req, res)=>
     try
     {
         const task = await tasksdb.findById(req.params.id)
-        console.log(task, task.i_d)
+        console.log(task)
         if(!task)
             return res.status(404).send("delete unsuccesful")
         if(task.user.toString() !== req.user)                                           // as we stored useID as objectId we take that to String

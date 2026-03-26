@@ -7,22 +7,26 @@ const Login = lazy(()=> import("./pages/Login"))
 const Register = lazy(()=> import("./pages/Register"))
 import {Toaster} from "react-hot-toast"
 import IntroPage from "./pages/IntroPage"
-import ResetPassword from "./pages/passwordResetPage"
+import PasswordResetPage from "./pages/passwordResetPage"
 const App = ()=>
 {
 
   return (
 <>
 
-    <Toaster position="top-right" reverseOrder={false} ></Toaster>
+    <Toaster position="top-right" reverseOrder={false}
+     toastOptions={{
+    duration: 2000, // 5 seconds for all toasts
+  }}
+    ></Toaster>
     <Router>
       <Routes>
-
-
     <Route path="/" element={
       <Suspense fallback={<PageLoader message="Loading Welcome Page" />} >  <Intro/>  </Suspense>
     }> </Route> 
-    <Route path="/reset-password" element={<passwordResetPage/>}></Route>
+    <Route path="/reset-password/:token" element={<PasswordResetPage resetpassform={true}/>}>
+    </Route>
+    <Route path="/reset-password" element={<PasswordResetPage/>}></Route>
     <Route path="/login" element={
       <Suspense fallback={<PageLoader message="Preparing to Login" />}>   <Login/>  </Suspense>
     }> </Route>

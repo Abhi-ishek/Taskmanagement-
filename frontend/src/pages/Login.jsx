@@ -24,9 +24,9 @@ const Login = ()=> {
       if(!err.response) // as no response axiosInstance takes care
         return;
       else if(err.response.status===401)
-      toast.error(err.response?.data?.message || "Check again invalid Credintials", {duration:4000});
+      toast.error(err.response?.data?.message || "Check again invalid Credintials", {id:"login", duration:4000});
     else {
-      toast.error("something wrong sorry", {duration:3000});
+      toast.error("something wrong sorry", {id:"error", duration:3000});
     }
     }
     finally
@@ -64,7 +64,7 @@ const Login = ()=> {
     onChange={handleChange}
   />
   <div className="text-right py-4">
-    <a className="text-blue-600 underline" href="#">Forgot Password</a>
+    <Link className="text-blue-600 underline" to="/reset-password">Forgot Password</Link>
   </div>
 
   <button 

@@ -25,7 +25,7 @@ exports.login = async (req, res, next)=>
             success:false,
             message:"Creditions are invalid"
         })
-        const token = jwt.sign({id:user._id}, process.env.JWT_SECRET, {expiresIn:"1h"})
+        const token = jwt.sign({id:user._id}, process.env.JWT_SECRET, {expiresIn:"24h"})
 
         res.status(200).json(
             {

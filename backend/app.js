@@ -1,13 +1,14 @@
 require("dotenv").config()
 // app.use("/users", taskRouter)
 const express = require("express");
-const app = express();   
+const app = express();  
+const cors = require('cors');
+app.use(cors("*")); 
 app.use(express.json())                                             // to access body otherwise undifined
 const taskRouter = require("./routes/taskRoutes.js")
 const mongoose = require("mongoose")
 const tasks = require("./models/Tasks.js")
-const cors = require('cors');
-app.use(cors()); 
+
 
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>

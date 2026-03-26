@@ -35,10 +35,10 @@ const handleDelete = async (taskId) => {
         const res = await deleteTask(taskId);
         setTasks(prevTasks => prevTasks.filter(task => task._id !== taskId));
         if(res.status===200)
-            toast.success("Task trashed! 🗑️", {duration:2000})
+            toast.success("Task trashed! 🗑️", {id:"trashed", duration:2000})
 
     } catch (err) {
-        toast.error("Failed to delete task. Please try again.", {duration:2000});
+        toast.error("Failed to delete task. Please try again.", {id:"error", duration:2000});
     }
 };
 const handleStatus = async (taskId)=>

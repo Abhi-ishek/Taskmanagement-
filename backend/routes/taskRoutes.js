@@ -4,8 +4,8 @@ let tasksdb = require("../models/Tasks.js")
 const {protect} = require("../middlewares/authMiddleware.js")
 const taskController = require("../Controller/taskcontroller.js")
 const authController = require("../Controller/authcontroller.js")
-const senEmail = require("../utils/sendEmail.js")
-
+const sendEmail = require("../utils/sendEmail.js")
+const resetPassword = require("../utils/resetPassword")
 //clean approach
 router.get("/tasks/all",protect, taskController.getallTasks)
 router.post("/tasks/add", protect, taskController.createTask)
@@ -14,7 +14,8 @@ router.delete("/tasks/delete/:id", protect, taskController.deleteTask)
 router.post("/auth/register", taskController.register)
 router.post("/auth/login", authController.login)
 router.put("/tasks/editTask/:id", protect, taskController.editTask)
-router.put("/reset-password/:token", senEmail)
+router.post("/reset-password/", sendEmail.sendEmail)
+router.post("/reset-password/request", resetPassword.resetPass)
 ///my intial approach 
 // router.get("/all", async (req, res)=>
 // {

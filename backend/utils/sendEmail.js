@@ -18,13 +18,13 @@ try{
         }
     } )
                                         
-const token = jwt.sign({id:user._id}, process.env.JWT_SECRET, {expiresIn:"5m"})
+const token = jwt.sign({id:user._id}, process.env.JWT_SECRET, {expiresIn:"15m"})
 const options =
 {
     from:process.env.EMAIL_PASS,
     to:email,
     subject:" To change Tasky password",
-    html:`<p>Please reset your password using the following Link, This link will expire within 5 minutes.
+    html:`<p>Please reset your password using the following Link, This link will expire within 15 minutes.
     <a href="http://localhost:5173/reset-password/${token}"> click here to reset password</a>
     </p>`
 }
@@ -34,10 +34,10 @@ transporter.sendMail(options, (err, success)=>
 {
     if(err)
       {
-        console.log(error)
+        console.log(err)
         return  res.status(401).json({message:"Server down please try after some time"})
       }
-      return res.status(200).json({message:"link to change password sent successfully to *****"+email.slice(5, -1)})
+      return res.status(200).json({message:"Reset link sent success  to to *****"+email.slice(5, -1)})
 })
 }
 catch(error)
