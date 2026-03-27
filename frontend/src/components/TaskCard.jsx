@@ -1,4 +1,4 @@
-import {updateStatus} from "../services/taskServices"
+import {updateStatus} from "../services/taskServices.jsx"
 
 const TaskCard = ({task, isCompleted, handleEditTask, changeStatus, onDelete})=>
 {
@@ -24,7 +24,7 @@ const TaskCard = ({task, isCompleted, handleEditTask, changeStatus, onDelete})=>
         : 'bg-white/10 hover:bg-white/20'
     }`}>
       <div className="flex justify-between items-start mb-3">
-        <h3 className={`text-xl font-semibold text-gray-800 ${isCompleted ? 'line-through' : ''}`}>
+        <h3 className={`text-xl font-semibold text-white ${isCompleted ? 'line-through' : ''}`}>
           {task.title}
         </h3>
         <span className={`px-3 py-1 text-xs font-medium rounded-full ml-4 flex-shrink-0 ${
@@ -36,7 +36,7 @@ const TaskCard = ({task, isCompleted, handleEditTask, changeStatus, onDelete})=>
         </span>
       </div>
 
-      <p className="whitespace-normal break-words  text-gray-600 mb-1">{task.content}</p>
+      <p className="whitespace-normal break-words  text-white mb-1">{task.content}</p>
 
       <div className="flex justify-end space-x-1">
         <button

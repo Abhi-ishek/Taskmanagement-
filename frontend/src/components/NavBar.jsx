@@ -28,7 +28,7 @@ function NavBar({handleLogout, setShowToggle, setEditingTask})
       <button
         onClick={() => {
           setEditingTask(false)
-          setShowToggle(!showToggle)
+          setShowToggle(true)
         }}
         className="px-1 py-1.5 text-sm font-small rounded-md 
         text-gray-700 bg-gray-100 hover:bg-gray-200 

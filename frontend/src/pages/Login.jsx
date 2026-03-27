@@ -37,17 +37,16 @@ const Login = ()=> {
 
     return (
     <>
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-center text-gray-800 mb-4 px-4">
-    Organize your life, one task at a time <span className="text-white-500"><GetNewQuote maxlength={32} style="text-shadow-green-900 text-white-600 text-3xl px-3 rounded-lg" /></span>
-</h1>
-<form onSubmit={hangleLogin} className="bg-white text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
-  <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">Login Now</h2>
+    <div className="min-h-screen w-full flex flex-col items-center justify-center  bg-slate-950 p-4">
+ <GetNewQuote maxlength={32} style="text-center text-blue-500 text-3xl px-3 rounded-lg" />
+
+<form onSubmit={hangleLogin} className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
+  <h2 className="mb-2 text-3xl text-center font-extrabold tracking-tight text-white">Login Now</h2>
   
   <input 
     id="email" 
     name="email"
-    className="w-full border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
+    className="w-full bg-white border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
     type="email" 
     placeholder="Enter your email" 
     required 
@@ -57,7 +56,7 @@ const Login = ()=> {
   <input 
     id="password"
     name="password"
-    className="w-full border mt-1 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
+    className="w-full bg-white border mt-1 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
     type="password" 
     placeholder="Enter your password" 
     required 
@@ -74,7 +73,7 @@ const Login = ()=> {
   >
    { loading? "Verifying... " : "Login"}
   </button>
-  <p className="text-center mt-4">
+  <p className="text-center text-white mt-2">
     Don’t have an account? <Link to="/register" className="text-blue-500 underline">Register Now</Link>
   </p>
 </form>

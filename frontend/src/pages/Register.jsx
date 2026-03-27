@@ -30,17 +30,19 @@ const Register = ()=> {
 
     return (
     <>
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-center text-gray-800 mb-4 px-4">
-   Streamline Your Workflow. <span className="text-blue-500">Start Organizing Today</span>
+    <div className="min-h-screen w-full flex flex-col items-center justify-center  bg-slate-950 p-4">
+        <h1 className="mb-2 text-xl text-center font-extrabold tracking-tight text-white">
+   Streamline Your Workflow. 
+   <div className="text-xl text-center font-extrabold tracking-tight text-red">By</div>
+   <span className="text-blue-500">Start Organizing Today</span>
 </h1>
-<form onSubmit={hangleRegister} className="bg-white text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
-  <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">SignUp</h2>
+<form onSubmit={hangleRegister} className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
+  <h2 className="mb-2 text-3xl text-center font-extrabold tracking-tight text-white">SignUp</h2>
   
     <input 
     id="name"
     name="name"
-    className="w-full border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
+    className="w-full bg-white border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
     type="text" 
     placeholder="Enter your Name" 
     required 
@@ -49,7 +51,7 @@ const Register = ()=> {
   <input 
     id="email"
     name="email"
-    className="w-full border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
+    className="w-full bg-white border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
     type="email" 
     placeholder="Enter your email" 
     required 
@@ -59,7 +61,8 @@ const Register = ()=> {
   <input 
     id="password"
     name="password"
-    className="w-full border mb-10 mt-1 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
+    maxLength="8"
+    className="w-full bg-white border mt-1 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
     type="password" 
     placeholder="Enter your password" 
     required 
@@ -68,12 +71,12 @@ const Register = ()=> {
 
   <button 
     type="submit" 
-    className="w-full mb-3 bg-indigo-500 hover:bg-indigo-600/90 active:scale-95 transition py-2.5 rounded-full text-white font-medium"
+    className="w-full mb-3  mt-3 bg-indigo-500 hover:bg-indigo-600/90 active:scale-95 transition py-2.5 rounded-full text-white font-medium"
     disabled={loading}
   >
    { loading? "Signing... " : "Sign Up"}
   </button>
-  <p className="text-center mt-4">
+  <p className="text-center">
     Already have an account? <Link to="/login" className="text-blue-500 underline">Login here</Link>
   </p>
 </form>

@@ -17,10 +17,13 @@ const AddTask = ({handleAddTask, handleEditedTask, editingTask, addTask, setAddT
             required
         />
         <textarea 
-            className="w-full p-2 mb-4 border rounded" 
+            className="w-full  p-2 mb-2 border rounded resize-none" 
             placeholder="Task Content"
             value={editingTask? addTask.content:undefined}
-            onChange={(e) => setAddTask({...addTask, "content":e.target.value})}
+            onChange={(e) => {
+        if (e.target.value.length <= 500) 
+             { setAddTask({...addTask, content: e.target.value}); }}}
+            onInput={(e)=>{e.target.style.height = "auto"; e.target.style.height = e.target.scrollHeight + "px"}}
             required
         />
         <div className="flex gap-2">

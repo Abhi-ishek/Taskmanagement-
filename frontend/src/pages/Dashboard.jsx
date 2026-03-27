@@ -1,12 +1,16 @@
 import {useState, useEffect} from "react"
-import API from "../api/axiosInstance"
 import TaskCard from "../components/TaskCard"
 import AddTask from "../components/AddTask"
 import {useNavigate} from "react-router-dom"
-import {deleteTask, updateStatus} from "../services/taskServices"
+import * as taskService from "../services/taskServices"
 import toast from "react-hot-toast"
 import NavBar from "../components/NavBar"
 import GetNewQuote from  "../components/Quote"
+
+
+
+
+
 const Dashboard = ()=>
 {
 const[loading, setLoading] = useState(false)
@@ -18,10 +22,9 @@ const nagivate = useNavigate();
 
 const handleEditedTask = async (e) => {
   e.preventDefault()
-  const res = await API.put(`/api/tasks/editTask/${addTask.id}`, {...addTask})
+  const res = await taskService.updateEditedTask(addTask)
   if(res.status===200)
   {
-    console.log(res)
     setTasks((previousTasks)=> previousTasks.map((task)=>
     {
       return task._id ===res.data._id? res.data : task
@@ -47,7 +50,7 @@ const handleAddTask = async (e)=>
 {
     try{
       e.preventDefault()
-        const res = await API.post("/api/tasks/add", addTask);
+        const res = await taskService.addNewTask(addTask);
         setTasks((currentTasks) => {
             const newTask = [res.data, ...currentTasks];
             return newTask;
@@ -65,7 +68,7 @@ const handleDelete = async (taskId) => {
     if (!window.confirm("Are you sure you want to delete this?")) return;
 
     try {
-        const res = await deleteTask(taskId);
+        const res = await taskService.deleteTask(taskId);
         setTasks(prevTasks => prevTasks.filter(task => task._id !== taskId));
         if(res.status===200)
             toast.success("Task trashed! 🗑️", {id:"trashed", duration:2000})
@@ -76,7 +79,7 @@ const handleDelete = async (taskId) => {
 };
 const handleStatus = async (taskId)=>
 {
-      const res = await  API.put(`/api/tasks/update/${taskId}`)
+      const res = await taskService.updateStatus(taskId)
       if(res.status===200)
             toast.success(GetNewQuote ||"you done the task keep going on 👌", {id:taskId, duration:3000})
         setTasks(prevTasks =>
@@ -99,7 +102,7 @@ useEffect(()=> {
     {
         try {
         setLoading(true)
-        const res = await API.get("/api/tasks/all");
+        const res = await taskService.getAllTasks();
         if(res.data)
         setTasks(res.data)
         }
@@ -138,7 +141,7 @@ handleEditedTask={handleEditedTask}
 
 }
 { loading? (<h3>Loading Tasks...</h3>) : (
-    tasks.length > 0 ? ( <div key={"container"} className="min-h-screen flex flex-col items-center justify-center gap-4 p-5 border border-blue-300 rounded-2xl"> {
+    tasks.length > 0 ? ( <div key={"container"} className="min-h-screen bg-slate-950 flex flex-col items-start justify-center gap-4 p-5 border border-blue-300 rounded-2xl"> {
                             tasks.map((task)=> {
                                 return (
                                 <TaskCard key={task._id} 
