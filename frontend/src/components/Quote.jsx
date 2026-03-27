@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react"
-import API from "../api/axiosInstance"
 import axios from "axios"
 
 
@@ -10,7 +9,7 @@ function getNewQuote({showRefresh=false, style, maxlength=30}) {
             {
               try {
                 setLoading(true)
-                 const  res = await axios.get(`http://api.quotable.io/random?maxLength=${maxlength}`)
+                 const  res = await axios.get(`https://api.quotable.io/random?maxLength=${maxlength}`)
                  setQuote(res.data.content)
                }
                catch(err)
