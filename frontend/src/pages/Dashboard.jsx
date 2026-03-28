@@ -36,14 +36,14 @@ const handleEditedTask = async (e) => {
     }))
     toast.success("task edited success")
   }
-    setShowToggle(false); // Open the form
+    setShowToggle(false); 
 };
 
 const handleEditTask = async(task)=>
 {
   try{
     setShowToggle(true)
-    setAddTask({id:task._id, title:task.title, content:task.content})  // Fill the inputs
+    setAddTask({id:task._id, title:task.title, content:task.content})  
     setEditingTask(true)
   }
   catch(err)
@@ -70,8 +70,8 @@ const handleAddTask = async (e)=>
 }
 
 const handleDeleteClick = (taskId) => {
-    setTaskToDelete(taskId); // Store the ID in state
-    setIsModalOpen(true);    // Open the Modal
+    setTaskToDelete(taskId); 
+    setIsModalOpen(true);    
 };
 const handleConfirmDelete = async () => {
 
@@ -105,7 +105,7 @@ const handleLogout = ()=>
 {
         if(!window.confirm("Are you sure want to Logout ?")) return
         localStorage.removeItem("token")
-        window.location.href = "/login"
+        window.location.href = "/"
 }
 
 useEffect(()=> {
@@ -159,7 +159,8 @@ handleEditedTask={handleEditedTask}
 
 }
 { loading? (<h3>Loading Tasks...</h3>) : (
-    tasks.length > 0 ? ( <div key={"container"} className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4 p-5 min-h-screen bg-slate-950"> {
+    tasks.length > 0 ? (
+         <div key={"container"} className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4 p-5 min-h-screen bg-slate-950 "> {
                             tasks.map((task)=> {
                                 return (
                                 <TaskCard key={task._id} 
@@ -171,7 +172,7 @@ handleEditedTask={handleEditedTask}
                                   />  )
                                                 } )
                                             }
-                        </div>)  : (<p>No tasks found. Start by creating one!</p>) 
+        </div>)  : (<p>No tasks found. Start by creating one!</p>) 
                                         )
 }
 </>

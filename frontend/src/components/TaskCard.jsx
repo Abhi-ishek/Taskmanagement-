@@ -13,7 +13,7 @@ const TaskCard = ({ task, isCompleted, handleEditTask, changeStatus, onDelete })
   };
 
   return (
-    <div className={`break-inside-avoid mb-4 p-4 relative pb-12 w-full max-w-200 rounded-xl shadow-lg backdrop-blur-md border border-white-800 transition duration-300 hover:scale-[1.05] 
+    <div className={`animate-in fade-in slide-in-from-bottom-10 duration-2000 fill-mode-forwards   break-inside-avoid mb-4 p-1 relative pb-12 w-full max-w-200 rounded-xl shadow-lg backdrop-blur-md border border-white-800 transition duration-300 hover:scale-[1.05] 
       ${isCompleted 
         ? 'bg-green-100/50 border-green-600 opacity-50' 
         : 'bg-white/10 border-gray-200/50 hover:bg-white/20'
@@ -30,7 +30,7 @@ const TaskCard = ({ task, isCompleted, handleEditTask, changeStatus, onDelete })
         </span>
       </div>
 
-      <p className="text-white/90 mb-4 text-sm leading-relaxed break-words">
+      <p className="text-white/90 mb-4 text-sm leading-relaxed break-words p-2">
         {task.content}
       </p>
 

@@ -30,14 +30,18 @@ const Register = ()=> {
 
     return (
     <>
-    <div className="min-h-screen w-full flex flex-col items-center justify-center  bg-slate-950 p-4">
-        <h1 className="mb-2 text-xl text-center font-extrabold tracking-tight text-white">
+    <div className=" relative flex min-h-screen flex-col lg:flex-row items-center justify-center gap-10 overflow-hidden bg-slate-950 p-2">
+        <h1 className="mb-2 text-xl text-center font-extrabold tracking-tight text-white
+        animate-in fade-in slide-in-from-top duration-1000">
    Streamline Your Workflow. 
    <div className="text-xl text-center font-extrabold tracking-tight text-red">By</div>
    <span className="text-blue-500">Start Organizing Today</span>
 </h1>
-<form onSubmit={hangleRegister} className="rounded-3xl border border-white/50 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
-  <h2 className="mb-2 text-3xl text-center font-extrabold tracking-tight text-white">SignUp</h2>
+<form onSubmit={hangleRegister} className="rounded-3xl border border-white/50 bg-white/5 p-6 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-2 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10
+animate-in fade-in slide-in-from-bottom duration-1000
+">
+  <h2 className="mb-2 text-3xl text-center font-extrabold tracking-tight text-white
+  animate-in fade-in slide-in-from-top duration-2000">SignUp</h2>
   
     <input 
     id="name"

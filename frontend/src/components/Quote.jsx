@@ -9,11 +9,14 @@ function getNewQuote({showRefresh=false, style, maxlength=56}) {
             {
       try {
         setLoading(true)
-            const res = await fetch(`http://api.quotable.io/random?maxLength=${maxlength}&minLength=30/?tag=Inspirational`);
-            const data = await res.json();
-            if(data.content)
+          const tags = ["motivation", "inspiration", "happiness", "love", "wisdom"];
+          const randomTag = tags[Math.floor(Math.random() * tags.length)];
+          const url = `https://quoteslate.vercel.app/api/quotes/random?minLength=30&maxLength=${maxlength}&tags=${randomTag}`;
+          const res = await fetch(url);
+          const data = await res.json();
+            if(data.quote)
             {
-                setQuote(data.content || "Focus on the process, not the outcome.");
+                setQuote(data.quote || "Focus on the process, not the outcome.");
             }
         } catch (error) {
             setQuote("Focus on the process, not the outcome.");
@@ -32,8 +35,8 @@ function getNewQuote({showRefresh=false, style, maxlength=56}) {
 return(
     <>
 <div className="flex justify-center mt-1">
-  <p className="flex items-center gap-2 text-gray-500 italic text-center max-w-md leading-relaxed">
-    <span className={ style || "truncate text-blue-500 w-full"}>
+  <p className="flex items-center gap-2 text-gray-500  text-center max-w-md leading-relaxed">
+    <span className={  style || "truncate text-blue-500 lg:text-4xl w-full"}>
       {quote}
         {showRefresh && (
       <button

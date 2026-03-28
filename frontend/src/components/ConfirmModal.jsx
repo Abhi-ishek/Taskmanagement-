@@ -10,7 +10,7 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message }) => {
       {title || "Are you sure?"}
     </h3>
     
-    <p className="text-gray-400 text-sm leading-relaxed">
+    <p className="text-gray-100 text-sm leading-relaxed">
       {message}
     </p>
 

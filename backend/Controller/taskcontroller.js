@@ -8,7 +8,7 @@ exports.getallTasks = async (req, res, next)=>
         const searchtask = {...req.query};
         if(searchtask.title) 
             searchtask.title = {$regex:searchtask.title}
-        const tasks = await tasksdb.find({user:req.user}).sort({updatedAt:-1})              //here in where clause user:user.req added by authmiddlewate so only that user will his tasks only
+        const tasks = await tasksdb.find({user:req.user}).sort({status:-1, updatedAt:-1})              //here in where clause user:user.req added by authmiddlewate so only that user will his tasks only
         if(tasks.length == 0) return res.send(tasks)
         return res.status(200).send(tasks)
     }
