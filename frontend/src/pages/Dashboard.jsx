@@ -65,7 +65,7 @@ const handleAddTask = async (e)=>
     }
     catch(err)
     {
-        alert(err.response?.data.message || "failed to create new Task")
+        toast.error(err.response?.data.message || "failed to create new Task")
     }
 }
 
@@ -91,8 +91,8 @@ const handleStatus = async (taskId)=>
       const res = await taskService.updateStatus(taskId)
       if(res.status===200)
          {   
-            const quote = await axios.get(`http://api.quotable.io/random?maxLength=40&minLength=30/?tag=Inspirational`)
-            toast.success( quote.data.content ||"you done the task keep going on 👌", {id:taskId, duration:3000})}
+            const res = await axios.get(`https://quoteslate.vercel.app/api/quotes/random?minLength=10&maxLength=32&tags=motivation`)
+            toast.success( res.data.quote ||"you done the task keep going on 👌", {id:taskId, duration:3000})}
         setTasks(prevTasks =>
         {
          return prevTasks.map(task=>task._id != taskId? task: res.data)
@@ -120,7 +120,7 @@ useEffect(()=> {
         catch(err)
         {
         console.log(err)
-            alert(err.response?.data?.message || "fetching tasks failed")
+            toast.error(err.response?.data?.message || "fetching tasks failed")
         }
         finally
         {

@@ -1,7 +1,7 @@
 import {registerUser} from "../services/authService"
 import {useState} from "react"
 import {useNavigate, Link} from "react-router-dom"
-
+import toast from "react-hot-toast"
 const Register = ()=> {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({name:"", email:"", password:""})
@@ -20,7 +20,7 @@ const Register = ()=> {
     }
     catch(err)
     {
-      alert(err.response?.data?.message || "Check agian invalid inputs");
+      toast.error(err.response?.data?.message || "Check agian invalid inputs");
     }
     finally
     {
@@ -88,5 +88,5 @@ animate-in fade-in slide-in-from-bottom duration-1000
 </div>
 </>
     )
-}
+};
 export default Register;

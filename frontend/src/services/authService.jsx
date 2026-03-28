@@ -16,8 +16,9 @@ export const loginUser = async (credentials) => {
 };
 
 export const registerUser = async (userData) => {
+    console.log(userData)
     try {
-        if(UserData.password.length<4)
+        if(userData.password.length<4)
         {
             return toast.error("Password too short")
         }
