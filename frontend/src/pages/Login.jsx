@@ -25,9 +25,6 @@ const Login = ()=> {
         return;
       else if(err.response.status===401)
       toast.error(err.response?.data?.message || "Check again invalid Credintials", {id:"login", duration:4000});
-    else {
-      toast.error("something wrong sorry", {id:"error", duration:3000});
-    }
     }
     finally
     {
@@ -37,10 +34,11 @@ const Login = ()=> {
 
     return (
     <>
-    <div className="min-h-screen w-full flex flex-col items-center justify-center  bg-slate-950 p-2">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center  bg-grey/50 p-2">
+   <div className="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[120px] z-0 pointer-events-none"></div>
  <GetNewQuote maxlength={32} style="text-center text-blue-500 text-3xl px-3 rounded-lg" />
 
-<form onSubmit={hangleLogin} className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
+<form onSubmit={hangleLogin} className="rounded-3xl border border-white/50 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
   <h2 className="mb-2 text-3xl text-center font-extrabold tracking-tight text-white">Login Now</h2>
   
   <input 

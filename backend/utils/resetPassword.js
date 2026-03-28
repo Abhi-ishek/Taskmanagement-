@@ -7,8 +7,6 @@ exports.resetPass= async (req, res)=>
         const token =  req.body.token;
         const restPassword = req.body.password;
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        console.log(decoded.id)
-        console.log(restPassword)
         if(!decoded || !decoded.id)
             return res.status(404).json({ message: "Invalid or expired token" })
         const salt = await bcrypt.genSalt(10)

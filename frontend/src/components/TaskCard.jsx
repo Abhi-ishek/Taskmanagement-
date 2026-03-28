@@ -13,9 +13,9 @@ const TaskCard = ({ task, isCompleted, handleEditTask, changeStatus, onDelete })
   };
 
   return (
-    <div className={`p-4 relative pb-12 max-w-200  h-auto w-full mt-[5px] rounded-xl shadow-lg backdrop-blur-md border transition duration-300 hover:scale-[1.02] 
+    <div className={`break-inside-avoid mb-4 p-4 relative pb-12 w-full max-w-200 rounded-xl shadow-lg backdrop-blur-md border border-white-800 transition duration-300 hover:scale-[1.05] 
       ${isCompleted 
-        ? 'bg-green-100/30 border-green-300/50 opacity-80' 
+        ? 'bg-green-100/50 border-green-600 opacity-50' 
         : 'bg-white/10 border-gray-200/50 hover:bg-white/20'
       }`}>
       
@@ -56,12 +56,12 @@ const TaskCard = ({ task, isCompleted, handleEditTask, changeStatus, onDelete })
         )}
         <button
           onClick={() => onDelete(task._id)}
-          className="px-3 py-1 rounded-lg bg-red-500 text-white hover:bg-red-600 transition shadow-md text-sm font-medium"
+          className="px-3 py-1 border-white rounded-lg bg-red-500 text-white hover:bg-red-600 transition shadow-md text-sm font-medium"
         >
           Delete
         </button>
       </div>
-      <div className="fixed text-white ml-1 bottom-0 left-0">
+      <div className="fixed text-grey-400 opacity-60 bg-white rounded-t-lg px-1 bottom-0 left-1">
           {isCompleted&& "Done "}{ formatLastUpdated(task.updatedAt) }
       </div>
     </div>

@@ -36,7 +36,7 @@ const Register = ()=> {
    <div className="text-xl text-center font-extrabold tracking-tight text-red">By</div>
    <span className="text-blue-500">Start Organizing Today</span>
 </h1>
-<form onSubmit={hangleRegister} className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
+<form onSubmit={hangleRegister} className="rounded-3xl border border-white/50 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
   <h2 className="mb-2 text-3xl text-center font-extrabold tracking-tight text-white">SignUp</h2>
   
     <input 
@@ -62,6 +62,7 @@ const Register = ()=> {
     id="password"
     name="password"
     maxLength="8"
+    minLength="4"
     className="w-full bg-white border mt-1 border-gray-500/30 outline-none rounded-full py-2.5 px-4 focus:ring-2 focus:ring-indigo-500/20" 
     type="password" 
     placeholder="Enter your password" 

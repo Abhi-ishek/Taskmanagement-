@@ -2,21 +2,18 @@ import {useState, useEffect} from "react"
 import axios from "axios"
 
 
-function getNewQuote({showRefresh=false, style, maxlength=35}) {
+function getNewQuote({showRefresh=false, style, maxlength=56}) {
     const [quote, setQuote] = useState("loading... quote")
     const [loading, setLoading] = useState(false)
     const getQuote = async ()=>
             {
       try {
         setLoading(true)
-            const res = await fetch('https://zenquotes.io/api/random/inspire');
+            const res = await fetch(`http://api.quotable.io/random?maxLength=${maxlength}&minLength=30/?tag=Inspirational`);
             const data = await res.json();
-            
-            // If the quote is too long for the UI, use a fallback or show it anyway
-            if (data.quote.length > maxlength) {
-                setQuote("Small steps lead to big destinations.");
-            } else {
-                setQuote(data.quote);
+            if(data.content)
+            {
+                setQuote(data.content || "Focus on the process, not the outcome.");
             }
         } catch (error) {
             setQuote("Focus on the process, not the outcome.");
@@ -35,8 +32,8 @@ function getNewQuote({showRefresh=false, style, maxlength=35}) {
 return(
     <>
 <div className="flex justify-center mt-1">
-  <p className="flex items-center gap-2 text-sm text-gray-500 italic text-center max-w-md leading-relaxed">
-    <span className={ style || "truncate text-blue-500"}>
+  <p className="flex items-center gap-2 text-gray-500 italic text-center max-w-md leading-relaxed">
+    <span className={ style || "truncate text-blue-500 w-full"}>
       {quote}
         {showRefresh && (
       <button

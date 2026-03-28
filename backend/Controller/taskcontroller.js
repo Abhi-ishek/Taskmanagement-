@@ -63,7 +63,6 @@ exports.deleteTask = async (req, res)=>
     try
     {
         const task = await tasksdb.findById(req.params.id)
-        console.log(task)
         if(!task)
             return res.status(404).send("delete unsuccesful")
         if(task.user.toString() !== req.user)                                           // as we stored useID as objectId we take that to String
@@ -81,13 +80,10 @@ exports.editTask = async (req, res, next)=>
 {
     try
     {
-        console.log(req.params.id)
-        console.log(req.user)
         const editedtask = req.body
         const task = await tasksdb.findOne({_id:req.params.id, user:req.user})
         if(task)
         { const updatedTask = await tasksdb.findByIdAndUpdate(task._id, {...editedtask}, {new:true})
-        console.log(updatedTask)
            return  res.status(200).json(updatedTask)
         }
         return res.status(401).json({message:"task not found"})
@@ -103,7 +99,7 @@ exports.register = async (req, res, next)=>
 {
     try
     {
-        console.log(req.body)
+   
         let {name, email, password} = req.body
         if(!name || !email || !password)
             res.status(401).json({message:"all input fields are required to register!"})

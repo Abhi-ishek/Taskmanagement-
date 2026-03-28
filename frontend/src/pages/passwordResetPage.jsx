@@ -15,15 +15,14 @@ const passwordResetPage = ({resetpassform =false})=> {
   }
   const handleReset = async (e)=>
   {
-    console.log(formData.password)
+
     e.preventDefault(e);
     setLoading(true);
     try{
       setLoading(true)
-      console.log(token, formData.password)
+
       if(formData.confirmpassword == formData.password)
         { const res = await API.post("/api/reset-password/request", {password:formData.password, token})
-      console.log("indside api")
         if(res.status == 200)
           toast.success("password reset successfully", {id:"reset", duration:3000})
         navigate("/login")
@@ -74,7 +73,7 @@ const handleSendMail = async (e)=>
     <div className="min-h-screen w-full flex flex-col items-center justify-center  bg-slate-950 p-1">
         <h1 className="text-center text-blue-500 text-3xl px-3 rounded-lg">
     Tasky for daily productivity, Organize your life Now</h1>
-<form onSubmit={ resetpassform? handleReset:handleSendMail} className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
+<form onSubmit={ resetpassform? handleReset:handleSendMail} className="rounded-3xl border border-white/50 bg-white/5 p-10 shadow-2xl backdrop-blur-xl transition-all hover:border-white/20 text-gray-500 max-w-[350px] mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
   <h2 className="text-2xl font-semibold mb-6 text-center text-white">{!resetpassform? "Enter you Email":"Reset password"}</h2>
   
 {resetpassform ||  <input 

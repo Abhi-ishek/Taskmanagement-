@@ -17,7 +17,8 @@ router.put("/tasks/editTask/:id", protect, taskController.editTask)
 router.post("/reset-password/", sendEmail.sendEmail)
 router.post("/reset-password/request", resetPassword.resetPass)
 router.put("/api/tasks/editTask/:id", protect, taskController.editTask)
-///my intial approach 
+
+///my intial approach as a beginner i did
 // router.get("/all", async (req, res)=>
 // {
 //     let alltasks = await tasksdb.find({});
