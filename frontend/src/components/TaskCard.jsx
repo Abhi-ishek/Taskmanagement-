@@ -23,14 +23,14 @@ const TaskCard = ({ task, isCompleted, handleEditTask, changeStatus, onDelete })
         <h3 className={`text-lg font-semibold text-white truncate mr-2 ${isCompleted ? 'line-through opacity-70' : ''}`}>
           {task.title}
         </h3>
-        <span className={`px-3 py-1 text-[10px] uppercase tracking-wider font-bold rounded-full flex-shrink-0 ${
+        <span className={`px-3 py-1 text-[10px] uppercase tracking-wider font-bold rounded-full shrink-0 ${
           isCompleted ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'
         }`}>
           {isCompleted ? 'Done' : 'Pending'}
         </span>
       </div>
 
-      <p className="text-white/90 mb-4 text-sm leading-relaxed break-words p-2">
+      <p className="text-white/90 mb-4 text-sm leading-relaxed wrap-break-word p-2">
         {task.content}
       </p>
 

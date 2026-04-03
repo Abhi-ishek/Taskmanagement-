@@ -104,12 +104,12 @@ exports.register = async (req, res, next)=>
         if(!name || !email || !password)
             res.status(401).json({message:"all input fields are required to register!"})
         const salt = await bcrypt.genSalt(10)                   // adds front and back 10 random values to make strong password hack
-        const hassedPassword =await bcrypt.hash(password, salt)
+        const hashedPassword =await bcrypt.hash(password, salt)
         let newUser = await User.create(
             {
                 name,
                 email,
-                password:hassedPassword
+                password:hashedPassword
             }
         )
         res.status(201).json(

@@ -3,8 +3,8 @@ import React from 'react';
 const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message }) => {
   if (!isOpen) return null;
   return (
-      <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-sm p-4">
-  <div className="w-full max-w-[400px] rounded-2xl border border-white/80  p-8 text-center shadow-2xl shadow-black/50">
+      <div className="fixed inset-0 z-1000 flex items-center justify-center bg-black/10 backdrop-blur-sm p-4">
+  <div className="w-full max-w-100 rounded-2xl border border-white/80  p-8 text-center shadow-2xl shadow-black/50">
     
     <h3 className="text-xl font-bold text-white mb-2">
       {title || "Are you sure?"}

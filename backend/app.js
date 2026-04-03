@@ -21,7 +21,7 @@ const mongoose = require("mongoose")
 const tasks = require("./models/Tasks.js")
 
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URI)
 .then(()=>
 {
     console.log("connected to mongodb")
@@ -52,10 +52,10 @@ app.use((err, req, res, next)=>
     );
 }
 );
+const PORT =process.env.PORT||4400
 
-
-app.listen(process.env.PORT, ()=>
+app.listen(PORT, ()=>
 {
-    console.log("server started")
+    console.log("server started ")
 }
 )

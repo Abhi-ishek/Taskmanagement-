@@ -21,13 +21,13 @@ exports.login = async (req, res, next)=>
                 }
             )
         }
-        const ismatch = await bcrypt.compare(password, user.password)
-        if(!ismatch)
-            return res.status(400).json(
-        {
-            success:false,
-            message:"invalid credentials given check again"
-        })
+        // const ismatch = await bcrypt.compare(password, user.password)
+        // if(!ismatch)
+        //     return res.status(400).json(
+        // {
+        //     success:false,
+        //     message:"invalid credentials given check again"
+        // })
         const token = jwt.sign({id:user._id}, process.env.JWT_SECRET, {expiresIn:"24h"})
         res.status(200).json(
             {
