@@ -1,27 +1,27 @@
-const mongoose = require("mongoose")
-const taskSchema = new mongoose.Schema(
+import { Schema, model } from "mongoose";
+const taskSchema = new Schema(
     {
 
         title:
         {
-            type:String,
-            requried:true,
-   
+            type: String,
+            required: true,
+
         },
         content:
         {
-            type:String
+            type: String
         },
         status:
         {
-            type:String,
-            default:"pending"
+            type: String,
+            default: "pending"
         },
         user:
         {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"User",
-            required:true
+            type: Schema.Types.ObjectId,
+            ref: "User",
+            required: true
         }
         //,
         // createdAt:
@@ -30,8 +30,8 @@ const taskSchema = new mongoose.Schema(
         //     default:Date.now()
         // }
     },
-    {timestamps:true}   //  It automatically sets createdAt when a document is first created and updates updatedAt every time the document is modified.
+    { timestamps: true }   //  It automatically sets createdAt when a document is first created and updates updatedAt every time the document is modified.
 )
-const task = mongoose.model("task", taskSchema)
+const task = model("task", taskSchema)
 
-module.exports = task;
+export default task;

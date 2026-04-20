@@ -1,22 +1,22 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-let tasksdb = require("../models/Tasks.js")
-const {protect} = require("../middlewares/authMiddleware.js")
-const taskController = require("../Controller/taskcontroller.js")
-const authController = require("../Controller/authcontroller.js")
-const sendEmail = require("../utils/sendEmail.js")
-const resetPassword = require("../utils/resetPassword")
+import tasksdb from "../models/Tasks.js";
+import { protect } from "../middlewares/authMiddleware.js";
+import { getallTasks, createTask, updateTask, deleteTask, register, editTask } from "../Controller/taskcontroller.js";
+import { login } from "../Controller/authcontroller.js";
+import { sendEmail as _sendEmail } from "../utils/sendEmail.js";
+import { resetPass } from "../utils/resetPassword.js";
 //clean approach
-router.get("/tasks/all",protect, taskController.getallTasks)
-router.post("/tasks/add", protect, taskController.createTask)
-router.put("/tasks/update/:id", protect, taskController.updateTask)
-router.delete("/tasks/delete/:id", protect, taskController.deleteTask)
-router.post("/auth/register", taskController.register)
-router.post("/auth/login", authController.login)
-router.put("/tasks/editTask/:id", protect, taskController.editTask)
-router.post("/reset-password/", sendEmail.sendEmail)
-router.post("/reset-password/request", resetPassword.resetPass)
-router.put("/api/tasks/editTask/:id", protect, taskController.editTask)
+router.get("/tasks/all", protect, getallTasks)
+router.post("/tasks/add", protect, createTask)
+router.put("/tasks/update/:id", protect, updateTask)
+router.delete("/tasks/delete/:id", protect, deleteTask)
+router.post("/auth/register", register)
+router.post("/auth/login", login)
+router.put("/tasks/editTask/:id", protect, editTask)
+router.post("/reset-password/", _sendEmail)
+router.post("/reset-password/request", resetPass)
+router.put("/api/tasks/editTask/:id", protect, editTask)
 
 ///my intial approach as a beginner i did
 // router.get("/all", async (req, res)=>
@@ -39,7 +39,7 @@ router.put("/api/tasks/editTask/:id", protect, taskController.editTask)
 //     {
 //         res.status(400).json({ms:"invalid id entered"});
 //     }
-    
+
 // })
 // router.post("/add", async(req, res)=>
 // {
@@ -57,7 +57,7 @@ router.put("/api/tasks/editTask/:id", protect, taskController.editTask)
 //     if(!task)
 //        return res.status(404).json({msg:`task with id ${id} not found`})
 //     return res.json({msd : task})
-    
+
 // })
 // router.delete("/delete/:id", async (req, res)=>
 // {
@@ -70,4 +70,4 @@ router.put("/api/tasks/editTask/:id", protect, taskController.editTask)
 //     }
 // })
 
-module.exports = router;
+export default router;

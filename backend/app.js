@@ -1,8 +1,8 @@
-require("dotenv").config()
+import 'dotenv/config';
 // app.use("/users", taskRouter)
-const express = require("express");
+import express, { json } from "express";
 const app = express();  
-const cors = require('cors');
+import cors from 'cors';
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -15,13 +15,13 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.use(express.json())    // to access request body
-const taskRouter = require("./routes/taskRoutes.js")
-const mongoose = require("mongoose")
-const tasks = require("./models/Tasks.js")
+app.use(json())    // to access request body
+import taskRouter from "./routes/taskRoutes.js";
+import { connect } from "mongoose";
+import tasks from "./models/Tasks.js";
 
 
-mongoose.connect(process.env.MONGO_URI)
+connect(process.env.MONGO_URI)
 .then(()=>
 {
     console.log("connected to mongodb")
@@ -39,6 +39,7 @@ app.use("/", (req, res, next)=>
 })
 
 app.use("/api", taskRouter)
+app.use ("/tasks", tasks)
 
 app.use((err, req, res, next)=>
 {
