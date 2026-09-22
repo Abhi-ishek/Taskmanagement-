@@ -16,7 +16,7 @@ const AddTask = ({handleAddTask, handleEditedTask, editingTask, addTask, setAddT
             required
         />
         <textarea 
-            className="w-full bg-gray-400 border mb-2 text-amber-50 border-gray-500/30 outline-none rounded-3xl py-2 px-2 focus:ring-2 focus:ring-indigo-500/20 resize-none" 
+            className="w-full bg-gray-400 border mb-3 text-amber-50 border-gray-500/30 outline-none rounded-3xl py-2 px-2 focus:ring-2 focus:ring-indigo-500/20 resize-none" 
             placeholder="Task Content"
             value={editingTask? addTask.content:undefined}
             onChange={(e) => {
