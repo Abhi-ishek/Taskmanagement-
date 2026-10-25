@@ -6,7 +6,7 @@ function NavBar({handleLogout, setShowToggle, setEditingTask})
 <nav className="animate-in fade-in slide-in-from-top duration-1000  z-9999 mx-1 bg-slate-950/60 backdrop-blur-lg rounded-full overflow-hidden px-2 py-2 border border-white/80 sticky top-2">
   <div className=" px-3 py-2">
     <div className=" flex justify-center">
-         <div className="fixed top-3 left-5 text-white whitespace-nowrap">
+         <div className="fixed top-3 left-6 text-white whitespace-nowrap">
   <span className="text-3xl font-extrabold tracking-tight">Task</span>
   <span className="text-sm text-bold font-light text-white ml-1.5 align-baseline ">by  </span>
 </div>
